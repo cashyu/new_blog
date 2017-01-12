@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
   res.send("fdsfdsfs")
 })
 
+console.log("@@@@@@@@@@@@@@@@@@@@@@@@@")
+
 app.listen(3000)
 
 
