@@ -1,0 +1,24 @@
+{
+  "name": {
+    "type": "string",
+    "comment":"用户账号"
+  },
+  "password": {
+    "type":"string",
+    "comment": "账号密码"
+  },
+  "gender": {
+    "type": "string",
+    "comment": "性别"
+  },
+  "avator": {
+    "type": "string",
+    "comment": "头像"
+  },
+  "bio": {
+    "type": "string",
+    "comment": "简介"
+  }
+}
+
+
