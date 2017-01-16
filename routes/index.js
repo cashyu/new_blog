@@ -1,12 +1,17 @@
-const express = require('express')
 
-let router = express.Router()
 
-router.get('/', (req, res) => {
-  res.send("hgfhgfhgf")
-})
 
-module.exports = router
+module.exports = function(app) {
+  app.get('/', (req, res) => {
+    res.redirect('/posts')
+  })
+
+  app.use('/signup', require('./signup'))
+  app.use('/signin', require('./signin'))
+  app.use('/signout', require('./signout'))
+  app.use('/posts', require('./posts'))
+  
+}
 
 
 
