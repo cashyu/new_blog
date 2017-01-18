@@ -3,11 +3,14 @@
     "type": "string",
     "comment":"用户账号"
   },
-  "password": {
+  "passwd": {
     "type":"string",
     "comment": "账号密码"
   },
-  "gender": {
+  "phonenum": {
+    "type":"string",
+    "comment":"手机号"
+  },
     "type": "string",
     "comment": "性别"
   },
@@ -18,6 +21,10 @@
   "bio": {
     "type": "string",
     "comment": "简介"
+  },
+  "created": {
+    "type": "string",
+    "comment":"注册时间"
   }
 }
 
