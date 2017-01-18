@@ -1,0 +1,20 @@
+#%RAML 1.0
+title: 博客
+version: v1
+baseUri: http://shopitem//{version}
+mediaType: application/json
+annotationTypes:
+  handlerFunc: string
+  groupBy: string
+/users:
+  description: 用户列表
+  get:
+    description: 获取用户列表
+    (handlerFunc): listUser
+    (groupBy): user
+/user:
+  description: 单个用户
+  post:
+    description: 新增用户
+    (handlerFunc): createUser
+    (groupBy): user

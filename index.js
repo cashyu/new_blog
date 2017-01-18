@@ -1,14 +1,16 @@
-const express = require('express')
-const path = require('path')
-const session = require('express-session')
-const cookie = require('cookie-parser')
-const RedisStore = require('connect-redis')(session)
-const flash = require('connect-flash') 
-const config = require("./config")
+const express = require('express');
+const path = require('path');
+const session = require('express-session');
+const cookie = require('cookie-parser');
+const RedisStore = require('connect-redis')(session);
+const flash = require('connect-flash');
+const config = require("./config");
+const blog = require('./design');
 
-let routes = require("./routes")
+//let routes = require("./routes")
 
 let app = express()
+
 
 //设置模板
 app.set('views', path.join(__dirname, 'views'))    //设置存放模板的位置
@@ -34,16 +36,15 @@ app.use(session({
 //falsh是基于session来通知的，所以应该放在session中间件后面
 app.use(flash())
 
-routes(app);
-
-app.use((err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).send("有错误!!!")
-}) 
-
+let {db, redis} = blog(config, app);
+app.routers();
+/*
 app.listen(config.port, () => {
   console.log(`blog listening on port ${config.port}`);
 })
+*/
 
-
-
+if(!module.parent){
+  app.run();
+}
+module.exports = {app, db, redis, config};

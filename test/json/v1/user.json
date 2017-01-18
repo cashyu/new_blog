@@ -1,0 +1,20 @@
+[
+  {
+    "describe": "注册用户",
+    "children": [
+      {
+        "describe": "注册一个用户",
+        "action": "createUser",
+        "reqBody": {"name":"along","phonenum":"18986998456","passwd":"123456"},
+        "resBody": {"userid": "<$1>","name":"along","phonenum":"18986998456"}
+      },
+      {
+        "describe": "注册一个用户(用户已经存在)",
+        "action": "createUser",
+        "reqBody": {"name":"along","phonenum":"18986998456","passwd":"123456"},
+        "status":400,
+        "resBody": {"message": "该手机号已被注册","code":"MDL_USER_CRT_TEL"}
+      }
+    ]
+  }
+]
