@@ -10,7 +10,7 @@ module.exports = function err(req, res, next) {
       res.status(opts.status || 500).json(json);
       return;
     }
-    
+   console.log(message) 
     let e = message;
     let status = e.status;
     code = e.code;
@@ -18,7 +18,7 @@ module.exports = function err(req, res, next) {
     opts = e.opts || {};
     if(!(e instanceof BlogError)) {
       code = 'UNC_MDW_EXP';
-      message = '为捕获异常';
+      message = '未捕获异常';
       status = 500;
     }
     json = {code, message};
@@ -46,6 +46,7 @@ module.exports = function err(req, res, next) {
         res.err(err);
       });
     } else {
+      console.log("wwwwwwwwwwwwwwwwwwwww")
       res.status(200).json(promise);
     }
   }

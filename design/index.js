@@ -1,4 +1,3 @@
-
 module.exports = function blog(opts, app) {
   const path = require('path');
   const async = require('async');
@@ -9,6 +8,7 @@ module.exports = function blog(opts, app) {
   const route = require('./routes');
   const dequire = require('./dequire')
   const Redis = require('ioredis')
+  const BlogError = require('../error')
   let config = opts;
   
   let db = new DB(config, dequire(path.join(config.appPath, 'design/models')));
@@ -96,12 +96,14 @@ module.exports = function blog(opts, app) {
   }
   app.run = (cb) => {
     app.use((err, req, res, next) => {
+      console.log("ddddddddddddddddd")
+      console.log(err)
       let code = err.code;
       let message = err.message;
       let status = err.status;
       if(!(err instanceof BlogError)) {
         code = 'UNC_SYS_EXP';
-        message = '为捕获异常';
+        message = '未捕获异常';
         status = 500;
       }
       res.status(status).send({code, message});
