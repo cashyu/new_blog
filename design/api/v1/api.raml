@@ -18,3 +18,25 @@ annotationTypes:
     description: 新增用户
     (handlerFunc): createUser
     (groupBy): user
+  /login:
+    post:
+      description: 用户登录
+      (handlerFunc): userLogin
+      (groupBy): user
+  /logout:
+    post:
+      descript: 用户退出
+      (handlerFunc): userLogout
+      (groupBy): user
+  /{userid}:
+    uriParameters:
+      userid: ID
+    /info:
+      get:
+        description: 获取用户信息
+        (handlerFunc): getUserInfo
+        (groupBy): user
+      put:
+        description: 更新用户信息
+        (handlerFunc): updateUserInfo
+        (groupBy): user  

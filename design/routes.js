@@ -44,6 +44,9 @@ module.exports = function route(app, ramlConfig, db, config) {
         next();
       });
       if(route.xml) mids.push(xml);
+      console.log(route.verb)
+      console.log(uri)
+      console.log(handler)
       app[route.verb](uri, mids, handler);  //设置路由的中间件
     }
     if (config.routers.verbose) {

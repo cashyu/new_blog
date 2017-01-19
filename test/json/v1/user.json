@@ -13,7 +13,42 @@
         "action": "createUser",
         "reqBody": {"name":"along","phonenum":"18986998456","passwd":"123456"},
         "status":400,
-        "resBody": {"message": "该手机号已被注册","code":"MDL_USER_CRT_TEL"}
+        "resBody": {"message": "该手机号已被注册","code":"MDL_USR_CRT_TEL"}
+      },
+      {
+        "describe": "<get>",
+        "action": "getUserInfo",
+        "params":["<$1>"],
+        "resBody": {"name":"along","phonenum":"18986998456"}
+      }
+    ]
+  },
+  {
+    "describe": "用户登录",
+    "children": [
+      {
+        "describe": "用户登录",
+        "action": "userLogin",
+        "reqBody":{"name":"along","passwd":"123456"},
+        "resBody":{"message":"操作成功"}
+      }
+    ]
+  },
+  {
+    "describe": "修改用户信息",
+    "children": [
+      {
+        "describe": "修改一个用户的名字",
+        "action": "updateUserInfo",
+        "reqBody": {"name":"cashyu"},
+        "params":["<$1>"],
+        "resBody":{"message":"操作成功"}
+      },
+      {
+        "describe": "<get>",
+        "action": "getUserInfo",
+        "params":["<$1>"],
+        "resBody": {"name":"cashyu","phonenum":"18986998456"}
       }
     ]
   }

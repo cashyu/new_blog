@@ -16,11 +16,16 @@ let config = {
   },
   port: 3000,
   session: {
-    secret: "cashyu",
-    db: 'blog_session'
+    name: "sessionid",
+    secret: 'cashyu',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      'maxAge': 20000
+    }
   },
   redis: {
-    host: "127.0.0.1",
+    host: '127.0.0.1',
     port: 6379,
     dsn: 'localhost:6379'
   },
@@ -42,7 +47,7 @@ let envConfig = {
 
 if(envConfig[env]) Object.assign(config, envConfig[env](config)) || {};
 
-console.log("eeeeeeeeeeeeee")
+console.log('eeeeeeeeeeeeee')
 console.log(config)
 module.exports = config 
 

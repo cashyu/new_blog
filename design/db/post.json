@@ -1,0 +1,35 @@
+{
+  "userid":{
+    "type": "id",
+    "comment": "文章作者"
+  },
+  "title": {
+    "type": "string",
+    "comment": "文章标题"
+  },
+  "content": {
+    "type": "string",
+    "comment": "文章内容"
+  },
+  "name":{
+    "type": "string",
+    "comment": "作者名字"
+  },
+  "bio": {
+    "type": "string",
+    "comment": "作者简介"
+  },
+  "pv": {
+    "type": "number",
+    "comment": "阅读量统计"
+  },
+  "created": {
+    "type": "string",
+    "comment": "发表时间"
+  },
+  "updated":{
+    "type": "string",
+    "comment": "更新时间"
+  }
+}
+
