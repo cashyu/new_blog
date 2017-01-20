@@ -2,6 +2,46 @@
   {
     "describe": "保存文章",
     "children": [
+      {
+        "describe": "保存一篇文章",
+        "action": "createPost",
+        "reqBody": {"title":"测试文章","content":"这是一篇测试文章","userid":"<$10.user>"},
+        "resBody": {"postid": "<$1>","title":"测试文章"}
+      },
+      {
+        "describe": "保存一篇文章",
+        "action": "createPost",
+        "reqBody": {"title":"测试文章2","content":"这是一篇测试文章","userid":"<$10.user>"},
+        "resBody": {"postid": "<$2>","title":"测试文章2"}
+      }
+    ]
+  },
+  {
+    "describe": "更新文章",
+    "children":[
+      {
+        "describe": "重新编辑一篇文章",
+        "action": "updatePostInfo",
+        "reqBody": {"content":"11111111111111111111111111111","userid":"<$1.user>"},
+        "params":["<$1>"],
+        "resBody":{"message":"操作成功"}
+      },
+      {
+        "describe":"<get>",
+        "action":"getPostInfo",
+        "params":["<$1>"],
+        "resBody":{"title":"测试文章","content":"11111111111111111111111111111"}
+      }
+    ]
+  },
+  {
+    "describe": "获取用户下的文章列表",
+    "children":[
+      {
+        "describe":"获取用户文章列表",
+        "action": "getUserPostList",
+        "reqBody": {"userid":"<$10.user>","limit":10,"sort":{"created": -1}} 
+      }
     ]
   }
 ]

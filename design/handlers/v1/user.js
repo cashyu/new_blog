@@ -9,8 +9,6 @@ exports.listUser = function listUser(req, res, next){
 
 exports.createUser = function createUser(req, res, next){
   let {model, body} = req;
-  console.log("11111111111111111")
-  console.log(req.sessionID)
   res.promise(model.createUser(body));
 }
 

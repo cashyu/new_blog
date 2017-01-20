@@ -24,9 +24,35 @@ class Post {
     data = Object.assign({}, this.defaults, data);
     return Coll.findOne({title: data.title}).then(doc => {
       if(doc) throw new blogError('文章已经存在', 'MDL_ART_CRT_EXS');
-      return Coll.inserOne(data).then(doc => {
+      return Coll.insertOne(data).then(doc => {
         return this.json(data, doc.insertedId);
       })
+    });
+  }
+  
+  //获取某作者的文章列表
+  getUserPostList(query) {
+    let Coll = this.collection;
+    return Coll.dbfind(query);
+  }
+  
+  //更新文章
+  updatePostInfo(postid, data) {
+    let Coll = this.collection;
+    let _id = ObjectId(postid);
+    return Coll.findOne({_id}).then(doc => {
+      if(!doc) throw new blogError('文章不存在', 'MDL_UPD_NOT_ART', {status: 400});
+      return Coll.updateOne({_id}, {$set:data});
+    });
+  }
+
+  //获取文章信息
+  getPostInfo(postid) {
+    let Coll = this.collection;
+    let _id = ObjectId(postid);
+    return Coll.findOne({_id}).then(doc => {
+      if(!doc) throw new blogError('文章不存在', 'MDL_GET_NOT_ART', {status: 400});
+      return this.json(doc);
     });
   }
 }

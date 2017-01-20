@@ -4,7 +4,7 @@ const server = require('../index');
 const path = require('path');
 
 let t = new Test(server, [
-  {name: 'blog_v1', dir: path.join(__dirname, './json/v1'), submodules: ['user']}
+  {name: 'blog_v1', dir: path.join(__dirname, './json/v1'), submodules: ['user', 'post']}
 ]);
 
 t.before(function(done){

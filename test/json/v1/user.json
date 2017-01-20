@@ -6,7 +6,7 @@
         "describe": "注册一个用户",
         "action": "createUser",
         "reqBody": {"name":"along","phonenum":"18986998456","passwd":"123456"},
-        "resBody": {"userid": "<$1>","name":"along","phonenum":"18986998456"}
+        "resBody": {"userid": "<$10>","name":"along","phonenum":"18986998456"}
       },
       {
         "describe": "注册一个用户(用户已经存在)",
@@ -18,7 +18,7 @@
       {
         "describe": "<get>",
         "action": "getUserInfo",
-        "params":["<$1>"],
+        "params":["<$10>"],
         "resBody": {"name":"along","phonenum":"18986998456"}
       }
     ]
@@ -41,13 +41,13 @@
         "describe": "修改一个用户的名字",
         "action": "updateUserInfo",
         "reqBody": {"name":"cashyu"},
-        "params":["<$1>"],
+        "params":["<$10>"],
         "resBody":{"message":"操作成功"}
       },
       {
         "describe": "<get>",
         "action": "getUserInfo",
-        "params":["<$1>"],
+        "params":["<$10>"],
         "resBody": {"name":"cashyu","phonenum":"18986998456"}
       }
     ]

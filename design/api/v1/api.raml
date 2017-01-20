@@ -3,6 +3,12 @@ title: 博客
 version: v1
 baseUri: http://shopitem//{version}
 mediaType: application/json
+types:
+  ID:
+    type: string
+    description: 对象ID值
+    example: 57e627441bf42a657034cb07
+    pattern: ^[0-9a-fA-F]{24}$
 annotationTypes:
   handlerFunc: string
   groupBy: string
@@ -25,9 +31,14 @@ annotationTypes:
       (groupBy): user
   /logout:
     post:
-      descript: 用户退出
+      description: 用户退出
       (handlerFunc): userLogout
       (groupBy): user
+  /post:
+    get:
+      description: 获取用户文章列表
+      (handlerFunc): getUserPostList
+      (groupBy): post
   /{userid}:
     uriParameters:
       userid: ID
@@ -39,4 +50,28 @@ annotationTypes:
       put:
         description: 更新用户信息
         (handlerFunc): updateUserInfo
-        (groupBy): user  
+        (groupBy): user
+/posts: 
+  description: 文章列表
+  get: 
+    description: 获取文章列表
+    (handlerFunc): listPost
+    (groupBy): post
+/post: 
+  description: 单篇文章
+  post: 
+    description: 新增一篇文章
+    (handlerFunc): createPost
+    (groupBy): post
+  /{postid}:
+    uriParameters:
+      postid: ID
+    /info:
+      get:
+        description: 获取一篇文章的信息
+        (handlerFunc): getPostInfo
+        (groupBy): post
+      put:
+        description: 修改一篇文章
+        (handlerFunc): updatePostInfo
+        (groupBy): post
